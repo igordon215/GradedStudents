@@ -3,6 +3,9 @@ package io.zipcoder;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class ClassroomTest {
 
     @Test
@@ -158,4 +161,70 @@ public class ClassroomTest {
         Assert.assertEquals(expected, actual);
     }
 
+    @Test
+    public void testGetStudentsByScore() {
+        // : Given
+        Double[] examScores = {100.0, 100.0, 90.0, 100.0, 93.0};
+        Double[] examScores2 = {75.0, 58.0, 84.0, 96.0, 98.0};
+        Double[] examScores3 = {100.0, 100.0, 100.0, 100.0, 100.0};
+        Student student1 = new Student("student","one", examScores);
+        Student student2 = new Student("student","two", examScores2);
+        Student student3 = new Student("student","three", examScores3);
+
+        Classroom codeClass = new Classroom(3);
+
+        // : When
+        codeClass.addStudent(student1);
+        codeClass.addStudent(student2);
+        codeClass.addStudent(student3);
+
+        String expected = "three one two ";
+        String actual = "";
+
+        for(int i = 0; i < codeClass.students.length; i++) {
+            actual += codeClass.getStudentsByScore()[i].getLastName() + " ";
+        }
+
+        // : Then
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testGetGradeBook() {
+        // : Given
+        Double[] examScores = {100.0, 100.0, 90.0, 100.0, 93.0};
+        Double[] examScores2 = {75.0, 58.0, 84.0, 96.0, 98.0};
+        Double[] examScores3 = {100.0, 100.0, 100.0, 100.0, 99.0};
+        Double[] examScores4 = {100.0, 100.0, 100.0, 100.0, 100.0};
+        Double[] examScores5 = {100.0, 100.0, 100.0, 100.0, 98.0};
+        Double[] examScores6 = {100.0, 100.0, 100.0, 100.0, 97.0};
+        Double[] examScores7 = {100.0, 100.0, 100.0, 100.0, 96.0};
+        Double[] examScores8 = {100.0, 100.0, 100.0, 100.0, 95.0};
+        Double[] examScores9 = {97.0, 80.0, 80.0, 80.0, 85.0};
+        Double[] examScores10 = {76.0, 58.0, 84.0, 96.0, 98.0};
+        Student student1 = new Student("student","one", examScores);
+        Student student2 = new Student("student","two", examScores2);
+        Student student3 = new Student("student","three", examScores3);
+        Student student4 = new Student("student","four", examScores4);
+        Student student5 = new Student("student","five", examScores5);
+        Student student6 = new Student("student","six", examScores6);
+        Student student7 = new Student("student","seven", examScores7);
+        Student student8 = new Student("student","eight", examScores8);
+        Student student9 = new Student("student","nine", examScores9);
+        Student student10 = new Student("student","ten", examScores10);
+        Student[] zipCode = {student1, student2, student3, student4, student5, student6, student7,student8, student9, student10};
+
+        Classroom codeClass = new Classroom(zipCode);
+
+        // : When
+        codeClass.setGradeBook();
+
+        ArrayList<Student> expected = new ArrayList<>(Arrays.asList(student4));
+        ArrayList<Student> actual = codeClass.getGradeBook('A');
+
+        System.out.println(codeClass.getGradeBook('A'));
+
+        // : Then
+        Assert.assertEquals(expected, actual);
+    }
 }
