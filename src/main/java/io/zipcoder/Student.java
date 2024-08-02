@@ -2,16 +2,19 @@ package io.zipcoder;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Student {
     private String firstName;
     private String lastName;
     private ArrayList<Double> examScores = new ArrayList<>();
-
+    private double avgExamScore;
 
     public Student(String firstName, String lastName, Double[] testScores) {
         this.firstName = firstName;
         this.lastName = lastName;
+        examScores.addAll(Arrays.asList(testScores));
+        setAvgExamScore();
     }
 
     public String getFirstName() {
@@ -30,19 +33,40 @@ public class Student {
         this.lastName = lastName;
     }
 
-    public ArrayList<Double> getExamScores() {
-        return examScores;
-    }
-
-    public void setExamScores(ArrayList<Double> examScores) {
-        this.examScores = examScores;
+    public String getExamScores() {
+        String studentExamScores = "Exam Scores:\n";
+        for (int i = 0; i < examScores.size(); i++) {
+            studentExamScores += String.format("\tExam %d -> %s\n", i + 1, examScores.get(i));
+        }
+        return studentExamScores;
     }
 
     public void addExamScores(double examScore) {
         examScores.add(examScore);
     }
 
+    public void setExamScores(int examNumber, double newScore) {
+        examScores.set(examNumber, newScore);
+    }
+
+    public double getExamScore(int examNumber) {
+        return examScores.get(examNumber);
+    }
+
+    public double getAverageExamScore() {
+        return avgExamScore;
+    }
+
     public int getNumberOfExamsTaken() {
         return examScores.size();
+    }
+
+
+    public void setAvgExamScore() {
+        double totalScore = 0;
+        for (int i = 0; i < examScores.size(); i++) {
+            totalScore += examScores.get(i);
+        }
+        avgExamScore = totalScore / examScores.size();
     }
 }
