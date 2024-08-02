@@ -69,4 +69,13 @@ public class Student {
         }
         avgExamScore = totalScore / examScores.size();
     }
+
+    @Override
+    public String toString() {
+        String namePart = String.format("Student Name: %s %s\n", this.firstName, this.lastName);
+        String avgScore = String.format("> Average Score: %s\n", getAverageExamScore());
+        String examScores = String.format("> %s", getExamScores());
+
+        return namePart + avgScore + examScores;
+    }
 }

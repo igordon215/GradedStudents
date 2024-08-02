@@ -161,4 +161,29 @@ public class StudentTest {
         Assert.assertEquals(expected, actual, 1e-16);
     }
 
+    @Test
+    public void testToString() {
+        // : Given
+        String firstName = "Bill";
+        String lastName = "Nye";
+        Double[] examScores = {100.0, 100.0, 90.0, 100.0, 93.0};
+        Student bill = new Student(firstName, lastName, examScores);
+
+        // : When
+        String expected = "Student Name: Bill Nye\n" +
+                "> Average Score: 96.6\n" +
+                "> Exam Scores:\n" +
+                "\tExam 1 -> 100.0\n" +
+                "\tExam 2 -> 100.0\n" +
+                "\tExam 3 -> 90.0\n" +
+                "\tExam 4 -> 100.0\n" +
+                "\tExam 5 -> 93.0\n";
+        String actual = bill.toString();
+        System.out.println(expected);
+        System.out.println(actual);
+
+        // : Then
+        Assert.assertEquals(expected, actual);
+    }
+
 }
