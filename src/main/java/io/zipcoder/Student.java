@@ -37,4 +37,12 @@ public class Student {
     public void setExamScores(ArrayList<Double> examScores) {
         this.examScores = examScores;
     }
+
+    public void addExamScores(double examScore) {
+        examScores.add(examScore);
+    }
+
+    public int getNumberOfExamsTaken() {
+        return examScores.size();
+    }
 }
