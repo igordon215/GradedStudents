@@ -4,7 +4,7 @@ package io.zipcoder;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Student implements Comparable<Student>{
+public class Student implements Comparable<Student> {
     private String firstName;
     private String lastName;
     private ArrayList<Double> examScores = new ArrayList<>();
@@ -81,6 +81,6 @@ public class Student implements Comparable<Student>{
 
     @Override
     public int compareTo(Student o) {
-        return (int)(o.getAverageExamScore() - this.avgExamScore);
+        return (int) (o.getAverageExamScore() - this.avgExamScore);
     }
 }

@@ -37,9 +37,9 @@ public class ClassroomTest {
         Double[] examScores = {100.0, 100.0, 90.0, 100.0, 93.0};
         Double[] examScores2 = {75.0, 58.0, 84.0, 96.0, 98.0};
         Double[] examScores3 = {55.0, 65.0, 75.0, 85.0, 95.0};
-        Student student1 = new Student("student","one", examScores);
-        Student student2 = new Student("student","two", examScores2);
-        Student student3 = new Student("student","three", examScores3);
+        Student student1 = new Student("student", "one", examScores);
+        Student student2 = new Student("student", "two", examScores2);
+        Student student3 = new Student("student", "three", examScores3);
         Student[] zipCode = {student1, student2, student3};
 
         Classroom codeClass = new Classroom(zipCode);
@@ -58,9 +58,9 @@ public class ClassroomTest {
         Double[] examScores = {100.0, 100.0, 90.0, 100.0, 93.0};
         Double[] examScores2 = {75.0, 58.0, 84.0, 96.0, 98.0};
         Double[] examScores3 = {55.0, 65.0, 75.0, 85.0, 95.0};
-        Student student1 = new Student("student","one", examScores);
-        Student student2 = new Student("student","two", examScores2);
-        Student student3 = new Student("student","three", examScores3);
+        Student student1 = new Student("student", "one", examScores);
+        Student student2 = new Student("student", "two", examScores2);
+        Student student3 = new Student("student", "three", examScores3);
         Student[] zipCode = {student1, student2, student3};
 
         Classroom codeClass = new Classroom(zipCode);
@@ -76,6 +76,29 @@ public class ClassroomTest {
 
         // : Then
         Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testAverageExamScore() {
+        // : Given
+        Double[] examScores = {100.0, 100.0, 90.0, 100.0, 93.0};
+        Double[] examScores2 = {75.0, 58.0, 84.0, 96.0, 98.0};
+        Double[] examScores3 = {55.0, 65.0, 75.0, 85.0, 95.0};
+        Student student1 = new Student("student", "one", examScores);
+        Student student2 = new Student("student", "two", examScores2);
+        Student student3 = new Student("student", "three", examScores3);
+        Student[] zipCode = {student1, student2, student3};
+
+        Classroom codeClass = new Classroom(zipCode);
+
+        // : When
+        double expected = 84.6;
+        double actual = codeClass.getAverageExamScore();
+        System.out.println(expected);
+        System.out.println(actual);
+
+        // : Then
+        Assert.assertEquals(expected, actual, 0.00000001);
     }
 
 }

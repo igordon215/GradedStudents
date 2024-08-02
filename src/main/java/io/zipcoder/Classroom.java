@@ -21,8 +21,8 @@ public class Classroom {
 
     public String getStudents() {
         String studentList = "Students: \n";
-        for(int i  = 0; i < students.length; i++) {
-            if(students[i] != null) {
+        for (int i = 0; i < students.length; i++) {
+            if (students[i] != null) {
                 studentList += String.format("\t%s %s\n", students[i].getFirstName(), students[i].getLastName());
             }
         }
@@ -37,13 +37,13 @@ public class Classroom {
         double totalAvgScore = 0;
         double avgAvgScore = 0;
 
-        for(int i = 0; i < students.length; i++) {
+        for (int i = 0; i < students.length; i++) {
             totalAvgScore += students[i].getAverageExamScore();
         }
 
-        avgAvgScore = totalAvgScore/students.length;
+        avgAvgScore = totalAvgScore / students.length;
 
-        return  avgAvgScore;
+        return avgAvgScore;
     }
 
 
