@@ -46,5 +46,32 @@ public class Classroom {
         return avgAvgScore;
     }
 
+    public void addStudent(Student student) {
+        ArrayList<Student> temp = new ArrayList<>();
+        temp.add(student);
+
+        for (int i = 0; i < students.length; i++) {
+            if (students[i] == null) {
+                students[i] = temp.get(0);
+                break;
+            }
+        }
+    }
+
+    public void removeStudent(String firstName, String lastName) {
+        for (int i = 0; i < students.length; i++) {
+            if (students[i].getFirstName().equals(firstName) && students[i].getLastName().equals(lastName)) {
+                students[i] = null;
+            }
+        }
+
+        for (int i = 0; i < students.length - 1; i++) {
+            if (students[i] == null) {
+                students[i] = students[i + 1];
+                students[i + 1] = null;
+            }
+        }
+    }
+
 
 }
